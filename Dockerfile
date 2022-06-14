@@ -1,11 +1,13 @@
-FROM python:3.9
+FROM python:3
 
 WORKDIR /usr/local/src/app
 
-COPY . .
+COPY requirements.txt ./
 
 RUN pip install --no-cache-dir -r  requirements.txt
 
-EXPOSE 80
+COPY . .
 
-CMD ["python", "app/main.py"]
+EXPOSE 8000
+
+CMD ["python", "app/main.py","--host=0.0.0.0"]

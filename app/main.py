@@ -3,7 +3,6 @@ from fastapi import FastAPI
 import numpy as np
 import joblib
 from pydantic.main import BaseModel
-import bar
 
 app = FastAPI(title= 'My App')
 
@@ -21,8 +20,9 @@ def predict(data:MyData):
     return str(my_model.predict(X))
 
 if __name__ == "__main__":
+
     # Changed it from app to 'main:app' to reload changes automatically.
-    uvicorn.run('main:app', host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run('main:app', host="0.0.0.0", port=8000, reload=True)
 
 
 
